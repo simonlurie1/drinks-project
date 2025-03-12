@@ -1,0 +1,22 @@
+.parentBox {
+    width: 300px;
+    height: 300px;
+    background-color: lightblue; /* Color for the outer box */
+    display: flex; /* Align children using flexbox */
+    justify-content: center; /* Center the child box horizontally */
+    align-items: center; /* Center the child box vertically */
+    border: 2px solid #000; /* Optional border for better visibility */
+    padding: 20px; /* Space inside the parent box */
+}
+
+/* Style for the child box */
+.childBox {
+    width: 250px;
+    height: 250px;
+    background-color: lightgreen; /* Color for the inner box */
+    border: 2px solid #000; /* Optional border for the inner box */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px; /* Space inside the child box */
+}
