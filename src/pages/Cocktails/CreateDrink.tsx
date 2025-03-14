@@ -13,14 +13,26 @@ const CreateDrink: React.FC = () => {
       const payload = {
         createdAt: new Date().toISOString(),
         name: 'simon',
-        image: 'xxxx',
+        image: 'N/A',
         category: values.category,
         alcoholic: values.alcoholic,
         instructions: values.instructions,
       };
       setCocktail(payload);
+
+      form.setFields([
+        { name: 'name', errors: [] },
+        { name: 'alcoholic', errors: [] },
+        { name: 'category', errors: [] },
+        { name: 'instructions', errors: [] },
+      ]);
+      form.resetFields();
+      setTimeout(() => {
+        // workaround for hide the validation after rest the form
+        form.resetFields();
+      }, 0);
     } catch (errorInfo) {
-      console.log('Failed:', errorInfo);
+      console.error('Failed:', errorInfo);
     }
   };
   return (
