@@ -1,0 +1,61 @@
+.cocktailDetailsPage {
+  background-color: #fff;
+}
+
+.imageWrapper {
+  width: 50%;
+  text-align: center;
+
+  img {
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+}
+
+.content {
+  display: flex;
+  gap: 20px;
+  padding-top: 20px;
+
+  label {
+    font-weight: bold;
+  }
+}
+
+.detailsList {
+  max-height: 700px;
+  overflow: auto;
+  width: 50%;
+}
+
+.detailsLine {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.drinkValue {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media screen and (width <= 1000px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .imageWrapper {
+    width: 100%;
+  }
+
+  .detailsList {
+    max-height: none;
+    width: 100%;
+  }
+
+  .detailsLine {
+    flex-direction: column;
+  }
+}

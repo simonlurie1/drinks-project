@@ -1,26 +1,49 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { Post, Comment } from '../../types';
+import { CocktailResponse, Drink } from './drinks/types';
 
 export const apiSlice = createApi({
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://www.thecocktaildb.com/api/json/v1/1/' }),
   endpoints: builder => ({
-    getPosts: builder.query<Post[], void>({
-      query: () => '/posts',
+    searchCocktailByName: builder.query<{ value: string; label: string }[], string>({
+      query: name => `search.php?s=${name}`,
+      transformResponse(response: CocktailResponse) {
+        return response?.drinks?.map((item: Drink) => ({
+          value: item.idDrink,
+          label: item.strDrink,
+        }));
+      },
     }),
-
-    getPost: builder.query<Post, string | number>({
-      query: postId => `/posts/${postId}`,
+    listAllCocktailsByFirstLetter: builder.query<{ value: string; label: string }[], string>({
+      query: letter => `search.php?f=${letter}`,
+      transformResponse(response: CocktailResponse) {
+        return response?.drinks?.map((item: Drink) => ({
+          value: item.idDrink,
+          label: item.strDrink,
+        }));
+      },
     }),
-    getPostComments: builder.query<Comment[], string | number>({
-      query: postId => `/posts/${postId}/comments`,
+    lookupFullCocktailDetailsById: builder.query<CocktailResponse, string>({
+      query: idDrink => `/lookup.php?i=${idDrink}`,
     }),
-    getTodos: builder.query<any[], void>({
-      query: () => '/todos',
+    filterByCategory: builder.query<CocktailResponse, string>({
+      query: (category = 'Cocktail') => `filter.php?c=${category}`,
+    }),
+    searchIngredientByName: builder.query<CocktailResponse, string>({
+      query: (drinkName = '') => `filter.php?c=${drinkName}`,
+    }),
+    lookupIngredientByID: builder.query<CocktailResponse, string>({
+      query: idDrink => `/lookup.php?iid=${idDrink}`,
     }),
   }),
 });
 
-export const { useGetPostsQuery, useGetPostQuery, useGetPostCommentsQuery, useGetTodosQuery } =
-  apiSlice;
+export const {
+  useLazySearchCocktailByNameQuery,
+  useLazyListAllCocktailsByFirstLetterQuery,
+  useLookupFullCocktailDetailsByIdQuery,
+  useFilterByCategoryQuery,
+  useSearchIngredientByNameQuery,
+  useLookupIngredientByIDQuery,
+} = apiSlice;

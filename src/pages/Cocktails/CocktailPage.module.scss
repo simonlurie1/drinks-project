@@ -1,0 +1,16 @@
+.content {
+  display: block;
+}
+
+.cocktails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  :global {
+    .swiper {
+      padding: 30px;
+    }
+  }
+}
+

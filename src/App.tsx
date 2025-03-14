@@ -1,22 +1,21 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-
-import Layout from './components/Layout';
-import AboutPage from './pages/AboutPage';
+import Layout from './components/Layout/Layout';
+import CreateDrink from './pages/Cocktails/CreateDrink';
+import CocktailsPage from './pages/Cocktails/CocktailsPage';
 import HomePage from './pages/HomePage';
-import PostPage from './pages/PostPage';
-import PostsPage from './pages/PostsPage';
-import PlayGround from './PlayGround';
+import CocktailDetails from './pages/Cocktails/CocktailDetails';
+import 'antd/dist/reset.css';
+import { cocktailDetailsPath, cocktailsPath, createCocktailPath } from './utils/routePaths';
 
 const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="posts" element={<PostsPage />} />
-        <Route path="posts/:postId" element={<PostPage />} />
-        <Route path="about" element={<AboutPage />} />
-        <Route path="simon" element={<PlayGround />} />
+        <Route path={createCocktailPath} element={<CreateDrink />} />
+        <Route path={cocktailsPath} element={<CocktailsPage />} />
+        <Route path={cocktailDetailsPath} element={<CocktailDetails />} />
       </Route>
     </Routes>
   );

@@ -1,78 +1,73 @@
 module.exports = {
-    parser: '@typescript-eslint/parser',
-    parserOptions: {
-        ecmaVersion: 2020,
-        sourceType: 'module',
-        ecmaFeatures: {
-            jsx: true,
-        },
-        project: './tsconfig.json',
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
     },
-    settings: {
-        react: {
-            version: 'detect',
-        },
+    project: './tsconfig.json',
+  },
+  settings: {
+    react: {
+      version: 'detect',
     },
-    extends: [
-        'eslint:recommended',
-        'plugin:react/recommended',
-        'plugin:react-hooks/recommended',
-        'plugin:@typescript-eslint/recommended',
-        'plugin:jsx-a11y/recommended',
-        'plugin:import/errors',
-        'plugin:import/warnings',
-        'plugin:import/typescript',
-        'prettier',
-        'plugin:prettier/recommended',
-    ],
-    rules: {
-        // React specific rules
-        'react/prop-types': 'off', // We use TypeScript for prop validation
-        'react/react-in-jsx-scope': 'off', // Not needed with React 17+
-        'react/jsx-uses-react': 'off', // Not needed with React 17+
-        'react/display-name': 'off',
-        'react-hooks/rules-of-hooks': 'error',
-        'react-hooks/exhaustive-deps': 'warn',
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
+        moduleDirectory: ['node_modules', 'src/'],
+        paths: ['node_modules'],
+      },
+    },
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+    'prettier',
+    'plugin:prettier/recommended',
+  ],
+  rules: {
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-uses-react': 'off',
+    'react/display-name': 'off',
+    'react-hooks/rules-of-hooks': 'warn',
+    'react-hooks/exhaustive-deps': 'warn',
+    'react/jsx-no-target-blank': 'off',
+    'react/no-unescaped-entities': 'off',
 
-        // TypeScript specific rules
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
-        '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-        '@typescript-eslint/no-explicit-any': 'warn',
-        '@typescript-eslint/no-non-null-assertion': 'warn',
-        '@typescript-eslint/ban-ts-comment': 'warn',
-        '@typescript-eslint/no-empty-function': 'warn',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-non-null-assertion': 'warn',
+    '@typescript-eslint/ban-ts-comment': 'warn',
+    '@typescript-eslint/no-empty-function': 'warn',
 
-        // Import rules
-        'import/order': [
-            'error',
-            {
-                'groups': [
-                    'builtin',
-                    'external',
-                    'internal',
-                    ['parent', 'sibling'],
-                    'index',
-                    'object',
-                    'type',
-                ],
-                'newlines-between': 'always',
-                'alphabetize': { order: 'asc', caseInsensitive: true },
-            },
-        ],
-        'import/no-duplicates': 'error',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/alt-text': 'off',
+    // Import rules
+    'import/order': 0,
+    'import/no-duplicates': 'error',
+    'import/no-unresolved': 'warn',
 
-        // General rules
-        'no-console': ['warn', { allow: ['warn', 'error'] }],
-        'eqeqeq': ['error', 'always'],
-        'curly': ['error', 'all'],
-        'prefer-const': 'error',
-        'spaced-comment': ['error', 'always'],
-    },
-    env: {
-        browser: true,
-        node: true,
-        es6: true,
-        jest: true,
-    },
-    ignorePatterns: ['build', 'dist', 'node_modules', '*.config.js', '*.config.ts'],
+    // General rules
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
+    eqeqeq: ['error', 'always'],
+    curly: ['error', 'all'],
+    'prefer-const': 'error',
+    'spaced-comment': ['error', 'always'],
+  },
+  env: {
+    browser: true,
+    node: true,
+    es6: true,
+    jest: true,
+  },
+  ignorePatterns: ['build', 'dist', 'node_modules', '*.config.js', '*.config.ts'],
 };

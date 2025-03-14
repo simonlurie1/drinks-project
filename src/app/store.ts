@@ -1,15 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { apiSlice } from '../features/api/apiSlice';
-import postsReducer from '../features/posts/postsSlice';
+import { mockSlice } from '../features/api/mockSlice';
+import drinksReducer from '../features/api/drinks/drinksSlice';
 
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
-    posts: postsReducer,
+    [mockSlice.reducerPath]: mockSlice.reducer,
+    drinks: drinksReducer,
   },
 
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(apiSlice.middleware),
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(apiSlice.middleware).concat(mockSlice.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -1,0 +1,27 @@
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e7e7e7;
+  align-items: center;
+}
+
+.navLink {
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.navBarList {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+}
+
+@media screen and (width <= 1000px) {
+  .navBar {
+    flex-direction: column;
+  }
+}
