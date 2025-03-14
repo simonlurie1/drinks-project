@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { CockTailState } from './types';
+import { MockState } from './types';
 
-const initialState: CockTailState = {
-  selectedDrinkId: null,
+const initialState: MockState = {
+  id: null,
 };
 
 const mocksSlice = createSlice({
@@ -12,7 +12,7 @@ const mocksSlice = createSlice({
   reducers: {
     setSelectedDrink: (state, action: PayloadAction<number | null>) => {
       console.log('set selectedDrinkId', action.payload);
-      state.selectedDrinkId = action.payload;
+      state.id = action.payload;
     },
   },
 });

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, generatePath } from 'react-router-dom';
-
 import { useLazySearchCocktailByNameQuery } from '../../features/api/apiSlice';
 import { AutoComplete } from 'antd';
 import debounce from 'lodash/debounce';
@@ -50,6 +49,7 @@ const SearchBar: React.FC = () => {
   const handleSelect = (value: string) => {
     navigate(generatePath(cocktailDetailsPath, { id: value }));
   };
+
   return (
     <div>
       <AutoComplete
