@@ -24,6 +24,7 @@ const CocktailsPage: React.FC = () => {
         <div>Loading </div>
       ) : (
         <div className={styles.content}>
+          <SearchBar />
           <div className={styles.cocktails}>
             <Swiper
               modules={[Navigation, Pagination]}
@@ -61,7 +62,6 @@ const CocktailsPage: React.FC = () => {
               ))}
             </Swiper>
           </div>
-          <SearchBar />
         </div>
       )}
     </div>

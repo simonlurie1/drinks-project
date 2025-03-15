@@ -65,7 +65,7 @@ const CreateDrink: React.FC = () => {
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
-        style={{ maxWidth: 600 }}
+        className={styles.form}
       >
         <Form.Item
           hasFeedback
