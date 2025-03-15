@@ -21,6 +21,7 @@ export const mockApiSlice = createApi({
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           await queryFulfilled;
+
           // @ts-ignore
           dispatch(mockApiSlice.util.invalidateTags(['mockGetTag']));
         } catch (e) {

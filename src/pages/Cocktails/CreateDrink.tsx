@@ -1,18 +1,32 @@
-import React from 'react';
-import { Button, Form, Input, Radio } from 'antd';
+import React, { useEffect } from 'react';
+import { Button, Form, Input, Radio, App } from 'antd';
 import { useGetCocktailsQuery, useSetCocktailMutation } from '../../features/api/mockApiSlice';
 
+import styles from './CreateDrink.module.scss';
+
 const CreateDrink: React.FC = () => {
-  const { data } = useGetCocktailsQuery();
+  const { data: myData } = useGetCocktailsQuery();
   const [form] = Form.useForm();
   const [setCocktail] = useSetCocktailMutation();
+  const { notification } = App.useApp();
+  const [submittable, setSubmittable] = React.useState<boolean>(false);
+
+  const values = Form.useWatch([], form);
+
+  React.useEffect(() => {
+    form
+      .validateFields({ validateOnly: true })
+      .then(() => setSubmittable(true))
+      .catch(() => setSubmittable(false));
+  }, [form, values]);
+
   const submit = async () => {
     try {
       const values = await form.validateFields();
 
       const payload = {
         createdAt: new Date().toISOString(),
-        name: 'simon',
+        name: values.name,
         image: 'N/A',
         category: values.category,
         alcoholic: values.alcoholic,
@@ -20,18 +34,25 @@ const CreateDrink: React.FC = () => {
       };
       setCocktail(payload);
 
-      form.setFields([
-        { name: 'name', errors: [] },
-        { name: 'alcoholic', errors: [] },
-        { name: 'category', errors: [] },
-        { name: 'instructions', errors: [] },
-      ]);
       form.resetFields();
+
+      notification.success({
+        message: 'Success',
+        description: 'Drink was created successfully!',
+        placement: 'topRight',
+        duration: 4,
+      });
+
       setTimeout(() => {
         // workaround for hide the validation after rest the form
         form.resetFields();
       }, 0);
     } catch (errorInfo) {
+      notification.error({
+        message: 'Error',
+        description: 'Failed to create drink. Please try again.',
+        placement: 'topRight',
+      });
       console.error('Failed:', errorInfo);
     }
   };
@@ -95,11 +116,22 @@ const CreateDrink: React.FC = () => {
           </Upload>
         </Form.Item>*/}
 
-        <Button type="primary" htmlType="submit" onClick={() => submit()}>
+        <Button type="primary" htmlType="submit" onClick={() => submit()} disabled={!submittable}>
           Submit
         </Button>
       </Form>
-      {JSON.stringify(data, null, 2)}
+      <br />
+      <br />
+      {myData && <h3>My list - ({myData?.length})</h3>}
+      <ul className={styles.drinksList}>
+        {myData?.map(drink => {
+          return (
+            <li key={drink.id}>
+              {drink.name} - {drink.alcoholic}, {drink.category}, {drink.instructions}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };

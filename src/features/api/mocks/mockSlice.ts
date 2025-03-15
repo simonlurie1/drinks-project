@@ -11,7 +11,6 @@ const mocksSlice = createSlice({
   initialState,
   reducers: {
     setSelectedDrink: (state, action: PayloadAction<number | null>) => {
-      console.log('set selectedDrinkId', action.payload);
       state.id = action.payload;
     },
   },
