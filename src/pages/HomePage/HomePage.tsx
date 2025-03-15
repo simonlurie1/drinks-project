@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '../styles/HomePage.module.scss';
+import styles from './HomePage.module.scss';
 
 const HomePage: React.FC = () => {
   return (
@@ -109,7 +109,6 @@ const HomePage: React.FC = () => {
         <br />
         <br />
         <br />
-        <img src="images/icons/image2.png" /> <b>Images</b>
         <br />
         Drink thumbnails <br />
         Add <b>/small</b> to the end of the cocktail image URL

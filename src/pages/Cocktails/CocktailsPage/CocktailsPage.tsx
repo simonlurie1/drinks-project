@@ -6,11 +6,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Card } from 'antd';
-import { useFilterByCategoryQuery } from '../../features/api/apiSlice';
-import { Drink } from '../../features/api/drinks/types';
+import { useFilterByCategoryQuery } from '../../../features/api/apiSlice';
+import { Drink } from '../../../features/api/drinks/types';
 import { Link } from 'react-router-dom';
-import styles from './CocktailPage.module.scss';
-import SearchBar from './SearchBar';
+import styles from '../CocktailPage.module.scss';
+import SearchBar from '../SearchBar';
 
 const CocktailsPage: React.FC = () => {
   const { data, isFetching, isLoading, isError } = useFilterByCategoryQuery('Cocktail');
