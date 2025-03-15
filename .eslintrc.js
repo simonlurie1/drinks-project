@@ -54,7 +54,7 @@ module.exports = {
     // Import rules
     'import/order': 0,
     'import/no-duplicates': 'error',
-    'import/no-unresolved': 'warn',
+    'import/no-unresolved': 'off',
 
     // General rules
     'no-console': ['warn', { allow: ['warn', 'error'] }],

@@ -6,11 +6,11 @@ export const mockApiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://67d432ef8bca322cc26c85a4.mockapi.io/cocktails/drinks',
   }),
+  tagTypes: ['mockGetTag'],
   endpoints: builder => ({
     getCocktails: builder.query<MockType[], void>({
       query: () => `/`,
-      // @ts-ignore
-      providesTags: ['mockGetTag'],
+      providesTags: [{ type: 'mockGetTag', id: 'LIST' }],
     }),
     setCocktail: builder.mutation<MockType[], MockType>({
       query: payload => ({
@@ -21,9 +21,7 @@ export const mockApiSlice = createApi({
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           await queryFulfilled;
-
-          // @ts-ignore
-          dispatch(mockApiSlice.util.invalidateTags(['mockGetTag']));
+          dispatch(mockApiSlice.util.invalidateTags([{ type: 'mockGetTag', id: 'LIST' }])); // Use the same format
         } catch (e) {
           console.error('error create a drink', e);
         }
