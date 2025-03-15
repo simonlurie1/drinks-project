@@ -9,7 +9,7 @@ import { Card } from 'antd';
 import { useFilterByCategoryQuery } from '../../../features/api/apiSlice';
 import { Drink } from '../../../features/api/drinks/types';
 import { Link } from 'react-router-dom';
-import styles from '../CocktailPage.module.scss';
+import styles from './CocktailPage.module.scss';
 import SearchBar from '../SearchBar';
 
 const CocktailsPage: React.FC = () => {
