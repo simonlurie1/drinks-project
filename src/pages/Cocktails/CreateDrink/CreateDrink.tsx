@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form, Input, Radio, App } from 'antd';
-import { useGetCocktailsQuery, useSetCocktailMutation } from '../../../features/api/mockApiSlice';
+import { useGetCocktailsQuery, useSetCocktailMutation } from '../../../api/mockApiSlice';
 
 import styles from './CreateDrink.module.scss';
 

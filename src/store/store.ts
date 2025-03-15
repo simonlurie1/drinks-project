@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { apiSlice } from '../features/api/apiSlice';
-import { mockApiSlice } from '../features/api/mockApiSlice';
-import drinksReducer from '../features/api/drinks/drinksSlice';
+import { apiSlice } from '../api/apiSlice';
+import { mockApiSlice } from '../api/mockApiSlice';
+import drinksReducer from '../api/drinks/drinksSlice';
 
 export const store = configureStore({
   reducer: {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, generatePath } from 'react-router-dom';
-import { useLazySearchCocktailByNameQuery } from '../../features/api/apiSlice';
+import { useLazySearchCocktailByNameQuery } from '../../api/apiSlice';
 import { AutoComplete } from 'antd';
 import debounce from 'lodash/debounce';
 import { cocktailDetailsPath } from '../../utils/routePaths';

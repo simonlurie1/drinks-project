@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useLookupFullCocktailDetailsByIdQuery } from '../../../features/api/apiSlice';
-import { Drink } from '../../../features/api/drinks/types';
+import { useLookupFullCocktailDetailsByIdQuery } from '../../../api/apiSlice';
+import { Drink } from '../../../api/drinks/types';
 import styles from './CocktailDetails.module.scss';
 
 interface PostParams {
