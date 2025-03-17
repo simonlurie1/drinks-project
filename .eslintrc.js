@@ -41,6 +41,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/jsx-no-target-blank': 'off',
     'react/no-unescaped-entities': 'off',
+    'react/jsx-key': 'warn',
 
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
@@ -49,6 +50,7 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 'warn',
     '@typescript-eslint/no-empty-function': 'warn',
 
+    'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
     'jsx-a11y/alt-text': 'off',
     // Import rules
