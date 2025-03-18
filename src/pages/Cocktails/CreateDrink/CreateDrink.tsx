@@ -74,7 +74,7 @@ const CreateDrink: React.FC = () => {
           validateTrigger="onBlur"
           rules={[{ required: true, message: 'Name is required!' }, { max: 50 }, { min: 3 }]}
         >
-          <Input placeholder="Validate required onBlur" />
+          <Input placeholder="insert drink name" />
         </Form.Item>
         <Form.Item
           label="alcoholic"
