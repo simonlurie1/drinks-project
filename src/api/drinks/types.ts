@@ -59,7 +59,7 @@ export interface Drink {
 }
 
 export interface CockTailState {
-  selectedDrinkId: number | null;
+  selectedDrinkId: string | null;
 }
 
 export type StoreState = ReturnType<typeof store.getState>;

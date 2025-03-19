@@ -55,7 +55,7 @@ const CocktailsPage: React.FC = () => {
                   <Link
                     to={`/cocktails/${cocktail.idDrink}`}
                     onClick={() => {
-                      dispatch(setSelectedDrink(parseInt(cocktail.idDrink)));
+                      dispatch(setSelectedDrink(cocktail.idDrink));
                     }}
                   >
                     <Card

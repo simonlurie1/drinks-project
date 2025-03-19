@@ -10,7 +10,7 @@ const drinksSlice = createSlice({
   name: 'drinks',
   initialState,
   reducers: {
-    setSelectedDrink: (state, action: PayloadAction<number | null>) => {
+    setSelectedDrink: (state, action: PayloadAction<string | null>) => {
       state.selectedDrinkId = action.payload;
     },
   },
