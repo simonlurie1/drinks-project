@@ -1,3 +1,5 @@
+import { store } from '../../store/store';
+
 export interface CocktailResponse {
   drinks: Drink[];
 }
@@ -59,3 +61,6 @@ export interface Drink {
 export interface CockTailState {
   selectedDrinkId: number | null;
 }
+
+export type StoreState = ReturnType<typeof store.getState>;
+export type StoreDispatch = typeof store.dispatch;

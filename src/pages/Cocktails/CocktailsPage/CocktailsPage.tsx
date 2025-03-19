@@ -11,9 +11,13 @@ import { Drink } from '../../../api/drinks/types';
 import { Link } from 'react-router-dom';
 import styles from './CocktailPage.module.scss';
 import SearchBar from '../SearchBar';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../store/store';
+import { setSelectedDrink } from '../../../api/drinks/drinksSlice';
 
 const CocktailsPage: React.FC = () => {
   const { data, isFetching, isLoading, isError } = useFilterByCategoryQuery('Cocktail');
+  const dispatch = useDispatch<AppDispatch>();
 
   return (
     <div>
@@ -48,7 +52,12 @@ const CocktailsPage: React.FC = () => {
             >
               {data?.drinks?.map((cocktail: Drink) => (
                 <SwiperSlide key={cocktail.idDrink}>
-                  <Link to={`/cocktails/${cocktail.idDrink}`}>
+                  <Link
+                    to={`/cocktails/${cocktail.idDrink}`}
+                    onClick={() => {
+                      dispatch(setSelectedDrink(parseInt(cocktail.idDrink)));
+                    }}
+                  >
                     <Card
                       hoverable
                       cover={
